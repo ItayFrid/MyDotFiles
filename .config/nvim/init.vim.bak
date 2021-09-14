@@ -1,0 +1,67 @@
+" Require https://github.com/junegunn/vim-plug
+" neoclide/coc.nvim required nodejs
+call plug#begin('~/.config/nvim/plugged')
+Plug 'junegunn/goyo.vim' | Plug 'morhetz/gruvbox' | Plug 'junegunn/limelight.vim'
+Plug 'ap/vim-css-color'
+call plug#end()
+
+"General Settings
+set encoding=UTF-8 nobackup nowritebackup nocursorline splitbelow splitright nu rnu
+set wildmode=longest,list,full
+set tabstop=4 shiftwidth=4 expandtab
+
+"Status line
+set statusline=
+set statusline+=%#NonText#
+set statusline+=%=
+set statusline+=\ %f
+set statusline+=\ 
+set statusline+=%#CursorLineNr#
+set statusline+=\%y 
+set statusline+=%#DiffText#
+set statusline+=\ %l/%L
+set statusline+=\ [%c]
+
+"Key-bindings
+let mapleader=" "
+nnoremap <leader>s :source ~/.config/nvim/init.vim<CR>
+nnoremap <leader><ENTER> :Goyo<CR>
+nnoremap Q <nop>
+xnoremap K :move '<-2<CR>gv-gv
+xnoremap J :move '>+1<CR>gv-gv
+
+"Color Settings
+colorscheme gruvbox
+set background=dark
+set termguicolors
+
+"Keep original background
+hi! Normal ctermbg=NONE guibg=NONE
+hi! NonText ctermbg=NONE guifg=NONE ctermfg=NONE
+
+"Limelight
+let g:limelight_conceal_ctermfg = 240
+let g:limelight_conceal_guifg = '#777777'
+
+"coc
+let g:coc_disable_startup_warning = 1
+"Goyo settings
+function! s:goyo_enter()
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+  " ...
+endfunction
+
+function! s:goyo_leave()
+  set showmode
+  set showcmd
+  set scrolloff=5
+  Limelight!
+  hi! Normal ctermbg=NONE guibg=NONE
+  " ...
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()

@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/itay/.config/awesome/lain/widget'
+let g:netrw_dirhist_0='/home/itay/.config/awesome/lain'
+let g:netrw_dirhist_9='/home/itay/.config/awesome'
+let g:netrw_dirhist_8='/home/itay/.config/awesome/freedesktop'
+let g:netrw_dirhist_7='/home/itay/.config/awesome'
+let g:netrw_dirhist_6='/home/itay/.config/awesome/themes'
+let g:netrw_dirhist_5='/home/itay/.config/awesome/themes/powerarrow-blue'
+let g:netrw_dirhist_4='/home/itay/.config/awesome'
+let g:netrw_dirhist_3='/home/itay/.config/awesome/themes'
+let g:netrw_dirhist_2='/home/itay/.config/awesome/themes/powerarrow-blue'
