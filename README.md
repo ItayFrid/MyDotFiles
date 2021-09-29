@@ -11,3 +11,4 @@ My linux configurations files
 * tty-clock - terminal clock
 * starship prompt
 * flameshot - screenshot utility
+* i3lock
