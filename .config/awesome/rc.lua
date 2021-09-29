@@ -231,7 +231,7 @@ globalkeys = my_table.join(
         {description = "Google Chrome" , group = "gui apps" }),
     awful.key({ modkey }, "r", function () awful.util.spawn( "rofi -show run" ) end,
         {description = "rofi" , group = "gui apps" }),
-    awful.key({ modkey }, "l", function () awful.spawn("gnome-screensaver-command -l") end,
+    awful.key({ modkey }, "l", function () awful.util.spawn("./Scripts/lockscreen") end,
         {description = "Lock Screen", group = "awesome"}),
     -- screenshot
     awful.key({ }, "Print", function () awful.util.spawn("scrot 'ArcoLinuxD-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'") end,
