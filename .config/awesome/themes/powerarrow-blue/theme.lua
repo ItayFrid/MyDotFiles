@@ -437,6 +437,7 @@ function theme.at_screen_connect(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
+            s.mylayoutbox,
             s.mytaglist,
             s.mypromptbox,
             spr,
@@ -456,7 +457,7 @@ function theme.at_screen_connect(s)
             -- wibox.container.background(wibox.container.margin(wibox.widget { nil, neticon, net.widget, layout = wibox.layout.align.horizontal }, 3, 3), "#32302f"),
             wibox.container.background(wibox.container.margin(clock, 4, 8), "#32302f" .. "55"),
             --]]
-            s.mylayoutbox,
+            -- s.mylayoutbox,
             wibox.widget.systray(),
         },
     }
