@@ -229,7 +229,7 @@ globalkeys = my_table.join(
     -- My applications (Super+Alt+Key)
     awful.key({ modkey, altkey }, "b", function () awful.util.spawn( "google-chrome-stable" ) end,
         {description = "Google Chrome" , group = "gui apps" }),
-    awful.key({ modkey }, "r", function () awful.util.spawn( "rofi -show run" ) end,
+    awful.key({ modkey }, "r", function () awful.util.spawn( "rofi -show drun -show-icons" ) end,
         {description = "rofi" , group = "gui apps" }),
     awful.key({ modkey }, "l", function () awful.util.spawn("./Scripts/lockscreen") end,
         {description = "Lock Screen", group = "awesome"}),
@@ -277,16 +277,10 @@ globalkeys = my_table.join(
              -- {description = "view  previous nonempty", group = "tag"}),
 
     -- Default client focus
-    awful.key({ altkey,           }, "j",
-        function ()
-            awful.client.focus.byidx( 1)
-        end,
+    awful.key({ altkey,           }, "j", function () awful.client.focus.byidx( 1) end,
         {description = "focus next by index", group = "client"}
     ),
-    awful.key({ altkey,           }, "k",
-        function ()
-            awful.client.focus.byidx(-1)
-        end,
+    awful.key({ altkey,           }, "k", function () awful.client.focus.byidx(-1) end,
         {description = "focus previous by index", group = "client"}
     ),
 
@@ -343,7 +337,19 @@ globalkeys = my_table.join(
             end,
             {description = "focus right", group = "client"}),
 
-
+        -- By direction move mouse with keys 
+        awful.key({ modkey, altkey }, "Down",    function() awful.util.spawn("xdotool mousemove_relative 0 +20")    end,
+            {description = "move down", group = "Mouse"}),
+        awful.key({ modkey, altkey }, "Up",      function() awful.util.spawn("xdotool mousemove_relative -- 0 -20") end,
+            {description = "move up", group = "Mouse"}),
+        awful.key({ modkey, altkey }, "Left",    function() awful.util.spawn("xdotool mousemove_relative -- -20 0") end,
+            {description = "move left", group = "Mouse"}),
+        awful.key({ modkey, altkey }, "Right",   function() awful.util.spawn("xdotool mousemove_relative +20 0")    end,
+            {description = "move right", group = "Mouse"}),
+        awful.key({ modkey, altkey }, "Return",  function() awful.util.spawn("xdotool click 1")                     end,
+            {description = "left click", group = "Mouse"}),
+        awful.key({ modkey, altkey }, "Shift_R", function() awful.util.spawn("xdotool click 3")                     end,
+            {description = "right click", group = "Mouse"}),
 
     awful.key({ modkey,           }, "w", function () awful.spawn("rofi -show window") end,
               {description = "show main menu", group = "awesome"}),
@@ -598,17 +604,9 @@ for i = 1, 9 do
 end
 
 clientbuttons = gears.table.join(
-    awful.button({ }, 1, function (c)
-        c:emit_signal("request::activate", "mouse_click", {raise = true})
-    end),
-    awful.button({ modkey }, 1, function (c)
-        c:emit_signal("request::activate", "mouse_click", {raise = true})
-        awful.mouse.client.move(c)
-    end),
-    awful.button({ modkey }, 3, function (c)
-        c:emit_signal("request::activate", "mouse_click", {raise = true})
-        awful.mouse.client.resize(c)
-    end)
+    awful.button({ }, 1, function (c) c:emit_signal("request::activate", "mouse_click", {raise = true}) end),
+    awful.button({ modkey }, 1, function (c) c:emit_signal("request::activate", "mouse_click", {raise = true}) awful.mouse.client.move(c) end),
+    awful.button({ modkey }, 3, function (c) c:emit_signal("request::activate", "mouse_click", {raise = true}) awful.mouse.client.resize(c) end)
 )
 
 -- Set keys
@@ -692,24 +690,9 @@ awful.rules.rules = {
         },
         class = {
           "Arandr",
-          "Blueberry",
-          "Galculator",
           "Gnome-font-viewer",
-          "Gpick",
-          "Imagewriter",
-          "Font-manager",
-          "Kruler",
-          "MessageWin",  -- kalarm.
-          "Oblogout",
-          "Peek",
-          "Skype",
-          "System-config-printer.py",
-          "Sxiv",
-          "Unetbootin.elf",
-          "Wpa_gui",
-          "pinentry",
-          "veromix",
-          "xtightvncviewer"},
+          "Font-manager"
+        },
 
         name = {
           "Event Tester",  -- xev.
@@ -807,5 +790,4 @@ awful.spawn.with_shell("picom --experimental-backends")
 awful.spawn.with_shell("renderscreens")
 awful.spawn.with_shell("setxkbmap -layout us,il -option grp:alt_shift_toggle")
 awful.spawn.with_shell("nm-applet")
-awful.spawn.with_shell("gnome-screensaver")
 awful.spawn.with_shell("nitrogen --restore")
