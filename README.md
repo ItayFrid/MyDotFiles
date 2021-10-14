@@ -12,3 +12,5 @@ My linux configurations files
 * starship prompt
 * flameshot - screenshot utility
 * i3lock
+* fish shell
+* alacritty

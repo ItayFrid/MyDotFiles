@@ -1,0 +1,27 @@
+Config { font = "xft:FiraCode Nerd Font Mono:pixelsize=12:antialias=true:hinting=true"
+       , additionalFonts = [ "xtf:Mononoki:pixelsize=11:antialias=true:hinting=true"
+			   , "xtf:Font Awesome 5 Free Solid:pixelsize=12"
+			   , "xtf:Font Awesome 5 Brands:pixelsize=12"
+			   ]
+       , bgColor = "black"
+       , fgColor = "#fabd2f"
+       , alpha = 150
+       , position = TopSize L 100 24
+       , lowerOnStart = True
+       , pickBroadest = False
+       , persistent = True
+       , hideOnStart = False
+       , iconRoot = "."
+       , allDesktops = True
+       , overrideRedirect = True
+       , commands = [ Run Cpu ["-L","3","-H","50",
+                               "--normal","green","--high","red", "-t", "<total>%"] 10
+                    , Run Memory ["-t","Mem: <used>M"] 10
+                    , Run Date "%_d.%_m.%y %H:%M" "date" 10
+		    , Run UnsafeStdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%UnsafeStdinReader% }\
+                    \{ %memory% (%cpu%) | <fc=#ee9a00>%date%</fc> "
+       }
