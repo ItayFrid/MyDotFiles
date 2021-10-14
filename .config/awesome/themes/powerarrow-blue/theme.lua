@@ -17,7 +17,7 @@ local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-blue"
 theme.wallpaper                                 = "/home/itay/Pictures/wallpapers/triple/ubuntu6.jpg"
 theme.font                                      = "FontAwesome 12"
-theme.taglist_font                              = "Droid Sans Bold 8"
+theme.taglist_font                              = "Droid Sans Bold 10"
 theme.fg_normal                                 = "#fabd2f"
 theme.fg_focus                                  = "#fabd2f"
 theme.fg_black                                  = "#32302f"
@@ -448,7 +448,7 @@ function theme.at_screen_connect(s)
            -- wibox.container.background(wibox.container.margin(wibox.widget { mailicon, mail and mail.widget, layout = wibox.layout.align.horizontal }, 4, 7), "#343434"),
             -- wibox.container.background(wibox.container.margin(wibox.widget { mpdicon, theme.mpd.widget, layout = wibox.layout.align.horizontal }, 3, 6), "#32302f"),
             -- wibox.container.background(wibox.container.margin(wibox.widget { volicon, theme.volume.widget, layout = wibox.layout.align.horizontal }, 2, 3), "#32302f"),
-            wibox.container.background(wibox.container.margin(wibox.widget { volicon, pulsevolume, layout = wibox.layout.align.horizontal }, 2, 3), "#32302f" .. "55"),
+            -- wibox.container.background(wibox.container.margin(wibox.widget { volicon, pulsevolume, layout = wibox.layout.align.horizontal }, 2, 3), "#32302f" .. "55"),
             wibox.container.background(wibox.container.margin(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, 2, 3), "#32302f" .. "55"),
             wibox.container.background(wibox.container.margin(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, 3, 4), "#32302f" .. "55"),
             -- wibox.container.background(wibox.container.margin(wibox.widget { tempicon, temp.widget, layout = wibox.layout.align.horizontal }, 4, 4), "#32302f"),
